@@ -147,9 +147,9 @@ func initGoMod(dir string) error {
 func initialGoGet(dir string) error {
 	versionSuffix := ""
 	if autopilotversion.Version != autopilotversion.DevVersion {
-		versionSuffix = "@" + autopilotversion.Version
+		versionSuffix = autopilotversion.Version
 	}
-	cmd := exec.Command("go", "get", "-v", "github.com/solo-io/autopilot"+versionSuffix)
+	cmd := exec.Command("go", "get", "-v", "github.com/solo-io/autopilot@"+versionSuffix)
 	cmd.Env = append(cmd.Env, os.Environ()...)
 	cmd.Env = append(cmd.Env, "GO111MODULE=on")
 	cmd.Dir = dir
